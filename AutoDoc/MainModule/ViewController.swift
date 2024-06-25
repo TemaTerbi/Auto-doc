@@ -9,52 +9,58 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private lazy var collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-    private let flowLayout = UICollectionViewFlowLayout()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         
         self.navigationItem.title = "Автоновости"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        addSubviews()
-        setupConstraints()
         setupCollectionView()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        updateCollectionView()
+    private func createLayout() -> UICollectionViewLayout {
+        let spacing: CGFloat = 10
+        let heightForCell: CGFloat = 400
+        let heightForGroup: CGFloat = 410
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(heightForCell))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(heightForGroup))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: spacing, leading: spacing, bottom: spacing, trailing: spacing)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
     
-    private func addSubviews() {
+    private func setupCollectionView() {
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        
         view.addSubview(collectionView)
-    }
-    
-    private func setupConstraints() {
+        
         collectionView.pinToTopSafeArea(equalTo: view)
         collectionView.pinToBottomSafeArea(equalTo: view)
         collectionView.pinToLeftSafeArea(equalTo: view)
         collectionView.pinToRightSafeArea(equalTo: view)
         collectionView.activateAnchor()
-    }
-    
-    private func setupCollectionView() {
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         
+        collectionView.backgroundColor = .systemGray6
+        
         collectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
-        collectionView.setCollectionViewLayout(flowLayout, animated: true)
-    }
-    
-    private func updateCollectionView() {
-        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        flowLayout.itemSize = CGSize(width: collectionView.frame.size.width - 20, height: 400)
     }
 }
 

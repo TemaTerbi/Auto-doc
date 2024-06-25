@@ -45,10 +45,6 @@ class PostCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = .white
         self.contentView.layer.cornerRadius = 15
         self.contentView.layer.masksToBounds = true
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowRadius = 5
-        self.layer.shadowOpacity = 0.2
-        self.layer.masksToBounds = false
         
         addSubviews()
         setupConstraints()
