@@ -27,11 +27,12 @@ final class ViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         setupCollectionView()
         
-        Task {
+        Task(priority: .userInitiated) {
             await viewModel.getNews()
         }
         
-        viewModel.$news.sink { _ in
+        viewModel.$news.sink { [weak self] _ in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -112,7 +113,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.news.count - 1 {
             URL.nextPage()
-            Task {
+            Task(priority: .userInitiated) {
                 await viewModel.fetchMorNews()
             }
         }
