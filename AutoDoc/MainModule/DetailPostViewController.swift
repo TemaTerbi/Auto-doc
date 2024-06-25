@@ -25,6 +25,7 @@ final class DetailPostViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 15
+        imageView.backgroundColor = .systemGray4
         return imageView
     }()
     
@@ -64,6 +65,11 @@ final class DetailPostViewController: UIViewController {
         titleOfPost.text = title
         descriptionOfPost.text = data.description
         dateOfPost.text = data.publishedDate
+        
+        //Грузим картинку асинхоронно, если изображение не успело подгрузиться в посте
+        if image == UIImage(resource: .car) {
+            detailPostImageView.loadImageUsingCache(withUrl: data.titleImageURL ?? "")
+        }
     }
     
     override func viewDidLoad() {
