@@ -11,7 +11,7 @@ import UIKit
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     private func pushWithAnimationCelll(nextViewcontroller controller: UIViewController, currentCell cell: UICollectionViewCell) {
         UIView.animate(withDuration: 0.2) {
-            cell.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            cell.transform = CGAffineTransform(scaleX: 2, y: 2)
         }
         navigationController?.pushViewController(controller, animated: true)
         UIView.animate(withDuration: 0.2) {
