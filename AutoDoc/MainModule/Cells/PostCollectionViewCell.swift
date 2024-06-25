@@ -9,13 +9,15 @@ import UIKit
 
 class PostCollectionViewCell: UICollectionViewCell {
     
+    //Отслеживаем на каком устройстве открыто приложение, чтобы можно было управлять размером текста в ячейке
     private let device = UIScreen.main.traitCollection.userInterfaceIdiom
     
+    //MARK: - Views items
     private lazy var imageOfPost: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage(resource: .car)
         imageView.image = image
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -39,6 +41,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -66,12 +69,12 @@ class PostCollectionViewCell: UICollectionViewCell {
         
         titleOfPost.activateAnchor()
         titleOfPost.pinToLeft(equalTo: imageOfPost, withOffset: 10)
-        titleOfPost.pinToRightSafeArea(equalTo: contentView, withOffset: -20)
+        titleOfPost.pinToRightSafeArea(equalTo: contentView, withOffset: 20)
         titleOfPost.pinToTopSafeArea(equalTo: contentView, withOffset: 20)
         
         categoryNewsLabel.activateAnchor()
         categoryNewsLabel.pinToLeft(equalTo: imageOfPost, withOffset: 10)
-        categoryNewsLabel.pinToRightSafeArea(equalTo: contentView, withOffset: -20)
+        categoryNewsLabel.pinToRightSafeArea(equalTo: contentView, withOffset: 20)
         categoryNewsLabel.pinToTop(equalTo: titleOfPost, withOffset: 10)
     }
     

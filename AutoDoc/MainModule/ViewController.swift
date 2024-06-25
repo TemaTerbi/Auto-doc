@@ -12,13 +12,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6
-        
         self.navigationItem.title = "Автоновости"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
         setupCollectionView()
     }
     
+    //MARK: - Cоздание compositional layout для колекции
     private func createLayout() -> UICollectionViewLayout {
         let spacing: CGFloat = 10
         let heightForCell: CGFloat = 400
@@ -41,25 +40,23 @@ class ViewController: UIViewController {
         return layout
     }
     
+    //MARK: - Конфигурируем коллекцию и показываем ее на экране
     private func setupCollectionView() {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        collectionView.backgroundColor = .systemGray6
         
         view.addSubview(collectionView)
         
+        collectionView.activateAnchor()
         collectionView.pinToTopSafeArea(equalTo: view)
         collectionView.pinToBottomSafeArea(equalTo: view)
         collectionView.pinToLeftSafeArea(equalTo: view)
         collectionView.pinToRightSafeArea(equalTo: view)
-        collectionView.activateAnchor()
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        
-        collectionView.backgroundColor = .systemGray6
-        
         collectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
     }
 }

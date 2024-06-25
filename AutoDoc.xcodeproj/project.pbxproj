@@ -18,6 +18,7 @@
 		653C7C1A2C2AD30800B94CCC /* NSLayoytAnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */; };
 		653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */; };
 		653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */; };
+		653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoytAnchorExtension.swift; sourceTree = "<group>"; };
 		653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				653C7C1B2C2ADF1D00B94CCC /* Cells */,
 				653C7BEA2C2ACEB500B94CCC /* ViewController.swift */,
+				653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */,
+				653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */,
 				653C7BEB2C2ACEB500B94CCC /* ViewController.swift in Sources */,
 				653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */,
 				653C7BE72C2ACEB500B94CCC /* AppDelegate.swift in Sources */,
@@ -477,8 +481,10 @@
 				DEVELOPMENT_TEAM = Y67XYRV445;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AutoDoc/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -509,8 +515,10 @@
 				DEVELOPMENT_TEAM = Y67XYRV445;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AutoDoc/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

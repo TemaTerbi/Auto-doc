@@ -31,7 +31,7 @@ extension UIView {
     }
     
     func pinToRightSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) {
-        let rightConstraint = self.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: offset)
+        let rightConstraint = self.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -offset)
         NSLayoutConstraint.activate([rightConstraint])
     }
     
@@ -41,7 +41,7 @@ extension UIView {
     }
     
     func pinToRight(equalTo view: UIView, withOffset offset: CGFloat = 0) {
-        let rightConstraint = self.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: offset)
+        let rightConstraint = self.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: -offset)
         NSLayoutConstraint.activate([rightConstraint])
     }
     
