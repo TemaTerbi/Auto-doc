@@ -27,7 +27,7 @@ final class ViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         setupCollectionView()
         
-        Task(priority: .userInitiated) {
+        Task(priority: .high) {
             await viewModel.getNews()
         }
         
@@ -113,7 +113,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.news.count - 1 {
             URL.nextPage()
-            Task(priority: .userInitiated) {
+            Task(priority: .background) {
                 await viewModel.fetchMorNews()
             }
         }
