@@ -25,11 +25,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCollectionViewCell
+        cell.accessibilityIdentifier = "postCell\(indexPath.row)"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         let detailViewController = DetailPostViewController()
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         pushWithAnimationCelll(nextViewcontroller: detailViewController, currentCell: cell)

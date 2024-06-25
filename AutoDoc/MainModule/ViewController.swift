@@ -43,6 +43,7 @@ class ViewController: UIViewController {
     //MARK: - Конфигурируем коллекцию и показываем ее на экране
     private func setupCollectionView() {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        collectionView.accessibilityIdentifier = "collectionView"
         collectionView.backgroundColor = .systemGray6
         
         view.addSubview(collectionView)
