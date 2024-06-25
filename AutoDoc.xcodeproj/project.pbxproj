@@ -16,6 +16,8 @@
 		653C7C082C2ACEB700B94CCC /* AutoDocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C072C2ACEB700B94CCC /* AutoDocUITests.swift */; };
 		653C7C0A2C2ACEB700B94CCC /* AutoDocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C092C2ACEB700B94CCC /* AutoDocUITestsLaunchTests.swift */; };
 		653C7C1A2C2AD30800B94CCC /* NSLayoytAnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */; };
+		653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */; };
+		653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		653C7C072C2ACEB700B94CCC /* AutoDocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoDocUITests.swift; sourceTree = "<group>"; };
 		653C7C092C2ACEB700B94CCC /* AutoDocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoDocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoytAnchorExtension.swift; sourceTree = "<group>"; };
+		653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 		653C7C172C2AD01700B94CCC /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				653C7C1B2C2ADF1D00B94CCC /* Cells */,
 				653C7BEA2C2ACEB500B94CCC /* ViewController.swift */,
 			);
 			path = MainModule;
@@ -147,8 +152,17 @@
 			isa = PBXGroup;
 			children = (
 				653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */,
+				653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		653C7C1B2C2ADF1D00B94CCC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */,
 				653C7BEB2C2ACEB500B94CCC /* ViewController.swift in Sources */,
+				653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */,
 				653C7BE72C2ACEB500B94CCC /* AppDelegate.swift in Sources */,
 				653C7BE92C2ACEB500B94CCC /* SceneDelegate.swift in Sources */,
 				653C7C1A2C2AD30800B94CCC /* NSLayoytAnchorExtension.swift in Sources */,
