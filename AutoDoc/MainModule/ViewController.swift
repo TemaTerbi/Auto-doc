@@ -103,9 +103,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailPostViewController()
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PostCollectionViewCell else { return }
+        let detailViewController = DetailPostViewController(image: cell.imageOfPost.image ?? .car, title: cell.titleOfPost.text ?? "", data: viewModel.news[indexPath.row])
         pushWithAnimationCelll(nextViewcontroller: detailViewController, currentCell: cell)
+    }
+    
+    //MARK: - Функционал для бесконечной ленты
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.news.count - 1 {
+            URL.nextPage()
+            Task {
+                await viewModel.fetchMorNews()
+            }
+        }
     }
 }
 

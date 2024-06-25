@@ -8,9 +8,15 @@
 import Foundation
 
 //MARK: - Base url extension
-private extension URL {
-    static let page = 1
-    static let baseUrl = URL(string: "https://webapi.autodoc.ru/api/news/\(page)/15")!
+extension URL {
+    static var page = 1
+    static var baseUrl = URL(string: "https://webapi.autodoc.ru/api/news/\(page)/15")!
+    
+    //MARK: - Меняет ссылку, чтобы поменялась страница и подгрузились следующие данные
+    static func nextPage() {
+        page += 1
+        baseUrl = URL(string: "https://webapi.autodoc.ru/api/news/\(page)/15")!
+    }
 }
 
 //MARK: - Network Service

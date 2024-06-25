@@ -18,7 +18,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
     private let cornerRadiusSize: CGFloat = 15
     
     //MARK: - Views items
-    private lazy var imageOfPost: UIImageView = {
+    private(set) lazy var imageOfPost: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage(resource: .car)
         imageView.backgroundColor = .systemGray5
@@ -28,7 +28,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var titleOfPost: UILabel = {
+    private(set) lazy var titleOfPost: UILabel = {
         let label = UILabel()
         label.text = "McLaren может использовать платформу BMW для внедорожника"
         label.numberOfLines = 0

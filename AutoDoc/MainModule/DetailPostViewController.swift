@@ -58,6 +58,14 @@ final class DetailPostViewController: UIViewController {
     }()
     
     //MARK: - Lifecycle
+    convenience init(image: UIImage, title: String, data: News) {
+        self.init()
+        detailPostImageView.image = image
+        titleOfPost.text = title
+        descriptionOfPost.text = data.description
+        dateOfPost.text = data.publishedDate
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6

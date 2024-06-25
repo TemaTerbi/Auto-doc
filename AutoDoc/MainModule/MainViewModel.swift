@@ -21,4 +21,11 @@ final class MainViewModel {
             self.news = news
         }
     }
+    
+    func fetchMorNews() async {
+        let newsFromApi = try? await networkManager.getNews()
+        if let news = newsFromApi {
+            self.news += news
+        }
+    }
 }
