@@ -9,9 +9,14 @@ import UIKit
 
 class PostCollectionViewCell: UICollectionViewCell {
     
-    //Отслеживаем на каком устройстве открыто приложение, чтобы можно было управлять размером текста в ячейке
-    private let device = UIScreen.main.traitCollection.userInterfaceIdiom
-    
+    //MARK: - Variables
+    private let titleFontSize: CGFloat = 20
+    private let categoryFontSize: CGFloat = 12
+    private let multiplierForIpad: CGFloat = 1.5
+    private let spacing: CGFloat = 10
+    private let spacingOfTitle: CGFloat = 20
+    private let cornerRadiusSize: CGFloat = 15
+        
     //MARK: - Views items
     private lazy var imageOfPost: UIImageView = {
         let imageView = UIImageView()
@@ -27,7 +32,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         label.text = "McLaren может использовать платформу BMW для внедорожника"
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: device == .pad ? 20 * 1.5 : 20, weight: .bold)
+        label.font = .systemFont(ofSize: DeviceChecker.isIpad() ? titleFontSize * multiplierForIpad : titleFontSize, weight: .bold)
         return label
     }()
     
@@ -36,7 +41,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         label.text = "Автоновости"
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: device == .pad ? 12 * 1.5 : 12, weight: .medium)
+        label.font = .systemFont(ofSize: DeviceChecker.isIpad() ? categoryFontSize * multiplierForIpad : categoryFontSize, weight: .medium)
         label.textColor = .systemGray2
         return label
     }()
@@ -46,7 +51,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.contentView.backgroundColor = .white
-        self.contentView.layer.cornerRadius = 15
+        self.contentView.layer.cornerRadius = cornerRadiusSize
         self.contentView.layer.masksToBounds = true
         
         addSubviews()
@@ -68,14 +73,14 @@ class PostCollectionViewCell: UICollectionViewCell {
         imageOfPost.setWidthWithMultiplier(equalTo: contentView, withMultiplier: 0.5)
         
         titleOfPost.activateAnchor()
-        titleOfPost.pinToLeft(equalTo: imageOfPost, withOffset: 10)
-        titleOfPost.pinToRightSafeArea(equalTo: contentView, withOffset: 20)
-        titleOfPost.pinToTopSafeArea(equalTo: contentView, withOffset: 20)
+        titleOfPost.pinToLeft(equalTo: imageOfPost, withOffset: spacing)
+        titleOfPost.pinToRightSafeArea(equalTo: contentView, withOffset: spacingOfTitle)
+        titleOfPost.pinToTopSafeArea(equalTo: contentView, withOffset: spacingOfTitle)
         
         categoryNewsLabel.activateAnchor()
-        categoryNewsLabel.pinToLeft(equalTo: imageOfPost, withOffset: 10)
-        categoryNewsLabel.pinToRightSafeArea(equalTo: contentView, withOffset: 20)
-        categoryNewsLabel.pinToTop(equalTo: titleOfPost, withOffset: 10)
+        categoryNewsLabel.pinToLeft(equalTo: imageOfPost, withOffset: spacing)
+        categoryNewsLabel.pinToRightSafeArea(equalTo: contentView, withOffset: spacing)
+        categoryNewsLabel.pinToTop(equalTo: titleOfPost, withOffset: spacing)
     }
     
     required init?(coder: NSCoder) {

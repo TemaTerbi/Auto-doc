@@ -19,6 +19,7 @@
 		653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */; };
 		653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */; };
 		653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */; };
+		653C7C262C2B4AE500B94CCC /* DeviceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C252C2B4AE500B94CCC /* DeviceChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
+		653C7C252C2B4AE500B94CCC /* DeviceChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				653C7BE62C2ACEB500B94CCC /* AppDelegate.swift */,
 				653C7BE82C2ACEB500B94CCC /* SceneDelegate.swift */,
+				653C7C242C2B4AD300B94CCC /* Managers */,
 				653C7C182C2AD26500B94CCC /* Extensions */,
 				653C7C172C2AD01700B94CCC /* MainModule */,
 				653C7C162C2ACEEB00B94CCC /* Resources */,
@@ -166,6 +169,14 @@
 				653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		653C7C242C2B4AD300B94CCC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				653C7C252C2B4AE500B94CCC /* DeviceChecker.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +312,7 @@
 				653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */,
 				653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */,
 				653C7BEB2C2ACEB500B94CCC /* ViewController.swift in Sources */,
+				653C7C262C2B4AE500B94CCC /* DeviceChecker.swift in Sources */,
 				653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */,
 				653C7BE72C2ACEB500B94CCC /* AppDelegate.swift in Sources */,
 				653C7BE92C2ACEB500B94CCC /* SceneDelegate.swift in Sources */,

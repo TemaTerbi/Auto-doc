@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let spacing: CGFloat = 10
+    private let heightForCell: CGFloat = 400
+    private let heightForGroup: CGFloat = 410
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6
@@ -19,10 +23,6 @@ class ViewController: UIViewController {
     
     //MARK: - Cоздание compositional layout для колекции
     private func createLayout() -> UICollectionViewLayout {
-        let spacing: CGFloat = 10
-        let heightForCell: CGFloat = 400
-        let heightForGroup: CGFloat = 410
-        
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(heightForCell))
