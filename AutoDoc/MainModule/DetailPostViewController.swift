@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailPostViewController: UIViewController {
+final class DetailPostViewController: UIViewController {
     
     //MARK: - Variables
     private let titleFontSize: CGFloat = 20
@@ -25,6 +25,7 @@ class DetailPostViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 15
+        imageView.backgroundColor = .systemGray4
         return imageView
     }()
     
@@ -58,6 +59,19 @@ class DetailPostViewController: UIViewController {
     }()
     
     //MARK: - Lifecycle
+    convenience init(image: UIImage, title: String, data: News) {
+        self.init()
+        detailPostImageView.image = image
+        titleOfPost.text = title
+        descriptionOfPost.text = data.description
+        dateOfPost.text = data.publishedDate
+        
+        //Грузим картинку асинхоронно, если изображение не успело подгрузиться в посте
+        if image == UIImage(resource: .car) {
+            detailPostImageView.loadImageUsingCache(withUrl: data.titleImageURL ?? "")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6

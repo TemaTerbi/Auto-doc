@@ -17,9 +17,12 @@
 		653C7C0A2C2ACEB700B94CCC /* AutoDocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C092C2ACEB700B94CCC /* AutoDocUITestsLaunchTests.swift */; };
 		653C7C1A2C2AD30800B94CCC /* NSLayoytAnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */; };
 		653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */; };
-		653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */; };
 		653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */; };
 		653C7C262C2B4AE500B94CCC /* DeviceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C252C2B4AE500B94CCC /* DeviceChecker.swift */; };
+		653C7C282C2B4F2900B94CCC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C272C2B4F2900B94CCC /* NetworkManager.swift */; };
+		653C7C2B2C2B50F700B94CCC /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2A2C2B50F700B94CCC /* NewsModel.swift */; };
+		653C7C2D2C2B51AD00B94CCC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2C2C2B51AD00B94CCC /* MainViewModel.swift */; };
+		653C7C2F2C2B58B400B94CCC /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2E2C2B58B400B94CCC /* AsyncImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +57,12 @@
 		653C7C092C2ACEB700B94CCC /* AutoDocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoDocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoytAnchorExtension.swift; sourceTree = "<group>"; };
 		653C7C1C2C2ADF3B00B94CCC /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
-		653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		653C7C252C2B4AE500B94CCC /* DeviceChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceChecker.swift; sourceTree = "<group>"; };
+		653C7C272C2B4F2900B94CCC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		653C7C2A2C2B50F700B94CCC /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		653C7C2C2C2B51AD00B94CCC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		653C7C2E2C2B58B400B94CCC /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 			children = (
 				653C7BE62C2ACEB500B94CCC /* AppDelegate.swift */,
 				653C7BE82C2ACEB500B94CCC /* SceneDelegate.swift */,
+				653C7C292C2B50EA00B94CCC /* Models */,
 				653C7C242C2B4AD300B94CCC /* Managers */,
 				653C7C182C2AD26500B94CCC /* Extensions */,
 				653C7C172C2AD01700B94CCC /* MainModule */,
@@ -150,6 +157,7 @@
 				653C7C1B2C2ADF1D00B94CCC /* Cells */,
 				653C7BEA2C2ACEB500B94CCC /* ViewController.swift */,
 				653C7C202C2B226C00B94CCC /* DetailPostViewController.swift */,
+				653C7C2C2C2B51AD00B94CCC /* MainViewModel.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -158,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */,
-				653C7C1E2C2AEF9D00B94CCC /* ViewControllerExtension.swift */,
+				653C7C2E2C2B58B400B94CCC /* AsyncImageLoader.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,8 +183,17 @@
 			isa = PBXGroup;
 			children = (
 				653C7C252C2B4AE500B94CCC /* DeviceChecker.swift */,
+				653C7C272C2B4F2900B94CCC /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		653C7C292C2B50EA00B94CCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				653C7C2A2C2B50F700B94CCC /* NewsModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,14 +326,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653C7C282C2B4F2900B94CCC /* NetworkManager.swift in Sources */,
+				653C7C2F2C2B58B400B94CCC /* AsyncImageLoader.swift in Sources */,
 				653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */,
 				653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */,
 				653C7BEB2C2ACEB500B94CCC /* ViewController.swift in Sources */,
+				653C7C2B2C2B50F700B94CCC /* NewsModel.swift in Sources */,
 				653C7C262C2B4AE500B94CCC /* DeviceChecker.swift in Sources */,
-				653C7C1F2C2AEF9D00B94CCC /* ViewControllerExtension.swift in Sources */,
 				653C7BE72C2ACEB500B94CCC /* AppDelegate.swift in Sources */,
 				653C7BE92C2ACEB500B94CCC /* SceneDelegate.swift in Sources */,
 				653C7C1A2C2AD30800B94CCC /* NSLayoytAnchorExtension.swift in Sources */,
+				653C7C2D2C2B51AD00B94CCC /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.artem-solovev.AutoDoc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -538,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.artem-solovev.AutoDoc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
