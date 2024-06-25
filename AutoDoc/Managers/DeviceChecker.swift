@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeviceChecker {
+final class DeviceChecker {
     static func getHeightOfImageInDetailView() -> CGFloat {
         let device = UIScreen.main.traitCollection.userInterfaceIdiom
         return device == .pad ? 400 : 200

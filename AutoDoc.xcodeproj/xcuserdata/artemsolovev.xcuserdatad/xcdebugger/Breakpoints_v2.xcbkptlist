@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E4A79EA5-5DA9-449C-B5AC-FAD790EF0274"
+            uuid = "958A0D47-D119-4FDF-8168-47CCBBDF4F50"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AutoDoc/MainModule/Cells/PostCollectionViewCell.swift"
+            filePath = "AutoDoc/Managers/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "setupConstraints()"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "getNews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

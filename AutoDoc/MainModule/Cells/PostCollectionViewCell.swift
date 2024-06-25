@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostCollectionViewCell: UICollectionViewCell {
+final class PostCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Variables
     private let titleFontSize: CGFloat = 20
@@ -16,11 +16,12 @@ class PostCollectionViewCell: UICollectionViewCell {
     private let spacing: CGFloat = 10
     private let spacingOfTitle: CGFloat = 20
     private let cornerRadiusSize: CGFloat = 15
-        
+    
     //MARK: - Views items
     private lazy var imageOfPost: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage(resource: .car)
+        imageView.backgroundColor = .systemGray5
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -85,5 +86,14 @@ class PostCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Configure methods
+    func setupData(withData data: News) {
+        titleOfPost.text = data.title
+        categoryNewsLabel.text = data.categoryType
+        if let imageUrl = data.titleImageURL {
+            imageOfPost.loadImageUsingCache(withUrl: imageUrl)
+        }
     }
 }

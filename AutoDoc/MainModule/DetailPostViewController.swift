@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailPostViewController: UIViewController {
+final class DetailPostViewController: UIViewController {
     
     //MARK: - Variables
     private let titleFontSize: CGFloat = 20
