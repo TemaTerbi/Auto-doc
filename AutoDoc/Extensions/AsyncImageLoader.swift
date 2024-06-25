@@ -27,7 +27,7 @@ extension UIImageView {
                 return
             }
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.async(qos: .background) {
                 if let image = UIImage(data: data!) {
                     imageCache.setObject(image, forKey: urlString as NSString)
                     self.image = image
