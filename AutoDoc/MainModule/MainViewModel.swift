@@ -7,12 +7,13 @@
 
 import Foundation
 import Combine
+import UIKit
 
 //MARK: - ViewModel
 final class MainViewModel {
     //MARK: - Variables and instance
     private let networkManager = NetworkManager()
-    @Published var news: [News] = []
+    @Published var news: [PostNews] = []
     
     //MARK: - Api servie methods
     func getNews() async {
@@ -22,7 +23,7 @@ final class MainViewModel {
         }
     }
     
-    func fetchMorNews() async {
+    func fetchMoreNews() async {
         URL.nextPage()
         let newsFromApi = try? await networkManager.getNews()
         if let news = newsFromApi {

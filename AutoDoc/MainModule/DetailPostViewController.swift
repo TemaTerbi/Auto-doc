@@ -59,17 +59,12 @@ final class DetailPostViewController: UIViewController {
     }()
     
     //MARK: - Lifecycle
-    convenience init(image: UIImage, title: String, data: News) {
+    convenience init(image: UIImage, title: String, description: String, publishedDate: String) {
         self.init()
         detailPostImageView.image = image
         titleOfPost.text = title
-        descriptionOfPost.text = data.description
-        dateOfPost.text = data.publishedDate
-        
-        //Грузим картинку асинхоронно, если изображение не успело подгрузиться в посте
-        if image == UIImage(resource: .car) {
-            detailPostImageView.loadImageUsingCache(withUrl: data.titleImageURL ?? "")
-        }
+        descriptionOfPost.text = description
+        dateOfPost.text = publishedDate
     }
     
     override func viewDidLoad() {

@@ -12,6 +12,7 @@ final class ViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private let viewModel = MainViewModel()
+    private let activityView = UIActivityIndicatorView(style: .large)
     
     //MARK: - Variables
     private let spacing: CGFloat = 10
@@ -20,6 +21,13 @@ final class ViewController: UIViewController {
     private var store: Set<AnyCancellable> = []
     
     //MARK: - Lifecycle
+    override func loadView() {
+        super.loadView()
+        Task(priority: .background) {
+            await viewModel.getNews()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6
@@ -27,14 +35,21 @@ final class ViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         setupCollectionView()
         
-        Task(priority: .high) {
-            await viewModel.getNews()
-        }
+        self.view.addSubview(activityView)
+        activityView.hidesWhenStopped = true
+        activityView.center = self.view.center
+        activityView.startAnimating()
         
-        viewModel.$news.sink { [weak self] _ in
+        viewModel.$news.sink { [weak self] value in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.collectionView.performBatchUpdates {
+                    self.collectionView.reloadSections(IndexSet(integer: 0))
+                }
+                
+                if !value.isEmpty {
+                    self.activityView.stopAnimating()
+                }
             }
         }.store(in: &store)
     }
@@ -98,14 +113,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCollectionViewCell
-        cell.setupData(withData: viewModel.news[indexPath.row])
         cell.accessibilityIdentifier = "postCell\(indexPath.row)"
+        let currentPost = viewModel.news[indexPath.row]
+        cell.setupData(withData: currentPost)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? PostCollectionViewCell else { return }
-        let detailViewController = DetailPostViewController(image: cell.imageOfPost.image ?? .car, title: cell.titleOfPost.text ?? "", data: viewModel.news[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCollectionViewCell
+        let currentPost = viewModel.news[indexPath.row]
+        let detailViewController = DetailPostViewController(image: currentPost.imageOfPost, title: currentPost.title, description: currentPost.description, publishedDate: currentPost.publishedDate)
         pushWithAnimationCelll(nextViewcontroller: detailViewController, currentCell: cell)
     }
     
@@ -113,7 +130,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.news.count - 1 {
             Task {
-                await viewModel.fetchMorNews()
+                await viewModel.fetchMoreNews()
             }
         }
     }

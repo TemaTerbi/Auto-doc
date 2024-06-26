@@ -22,7 +22,7 @@
 		653C7C282C2B4F2900B94CCC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C272C2B4F2900B94CCC /* NetworkManager.swift */; };
 		653C7C2B2C2B50F700B94CCC /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2A2C2B50F700B94CCC /* NewsModel.swift */; };
 		653C7C2D2C2B51AD00B94CCC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2C2C2B51AD00B94CCC /* MainViewModel.swift */; };
-		653C7C2F2C2B58B400B94CCC /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2E2C2B58B400B94CCC /* AsyncImageLoader.swift */; };
+		65DFBADA2C2C1223008112F9 /* AsyncForEach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFBAD92C2C1223008112F9 /* AsyncForEach.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		653C7C272C2B4F2900B94CCC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		653C7C2A2C2B50F700B94CCC /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		653C7C2C2C2B51AD00B94CCC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		653C7C2E2C2B58B400B94CCC /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
+		65DFBAD92C2C1223008112F9 /* AsyncForEach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncForEach.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */,
-				653C7C2E2C2B58B400B94CCC /* AsyncImageLoader.swift */,
+				65DFBAD92C2C1223008112F9 /* AsyncForEach.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,8 +326,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65DFBADA2C2C1223008112F9 /* AsyncForEach.swift in Sources */,
 				653C7C282C2B4F2900B94CCC /* NetworkManager.swift in Sources */,
-				653C7C2F2C2B58B400B94CCC /* AsyncImageLoader.swift in Sources */,
 				653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */,
 				653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */,
 				653C7BEB2C2ACEB500B94CCC /* ViewController.swift in Sources */,
@@ -524,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.artem-solovev.AutoDoc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -558,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.artem-solovev.AutoDoc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

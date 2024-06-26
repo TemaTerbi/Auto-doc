@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - NewsModel
 struct NewsModel: Codable {
@@ -27,4 +28,9 @@ struct News: Codable {
         case titleImageURL = "titleImageUrl"
         case categoryType
     }
+}
+
+struct PostNews {
+    let title, description, publishedDate, categoryType: String
+    let imageOfPost: UIImage
 }
