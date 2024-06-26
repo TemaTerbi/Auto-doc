@@ -63,21 +63,23 @@ final class PostCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraints() {
         imageOfPost.activateAnchor()
-        
-        imageOfPost.pinToTopSafeArea(equalTo: contentView)
-        imageOfPost.pinToLeftSafeArea(equalTo: contentView)
-        imageOfPost.pinToBottomSafeArea(equalTo: contentView)
-        imageOfPost.setWidthWithMultiplier(equalTo: contentView, withMultiplier: 0.5)
-        
-        titleOfPost.activateAnchor()
-        titleOfPost.pinToLeft(equalTo: imageOfPost, withOffset: spacing)
-        titleOfPost.pinToRightSafeArea(equalTo: contentView, withOffset: spacingOfTitle)
-        titleOfPost.pinToTopSafeArea(equalTo: contentView, withOffset: spacingOfTitle)
-        
         categoryNewsLabel.activateAnchor()
-        categoryNewsLabel.pinToLeft(equalTo: imageOfPost, withOffset: spacing)
-        categoryNewsLabel.pinToRightSafeArea(equalTo: contentView, withOffset: spacing)
-        categoryNewsLabel.pinToTop(equalTo: titleOfPost, withOffset: spacing)
+        titleOfPost.activateAnchor()
+        
+        NSLayoutConstraint.activate([
+            imageOfPost.pinToTopSafeArea(equalTo: contentView),
+            imageOfPost.pinToLeftSafeArea(equalTo: contentView),
+            imageOfPost.pinToBottomSafeArea(equalTo: contentView),
+            imageOfPost.setWidthWithMultiplier(equalTo: contentView, withMultiplier: 0.5),
+            
+            titleOfPost.pinToLeft(equalTo: imageOfPost, withOffset: spacing),
+            titleOfPost.pinToRightSafeArea(equalTo: contentView, withOffset: spacingOfTitle),
+            titleOfPost.pinToTopSafeArea(equalTo: contentView, withOffset: spacingOfTitle),
+            
+            categoryNewsLabel.pinToLeft(equalTo: imageOfPost, withOffset: spacing),
+            categoryNewsLabel.pinToRightSafeArea(equalTo: contentView, withOffset: spacing),
+            categoryNewsLabel.pinToTop(equalTo: titleOfPost, withOffset: spacing),
+        ])
     }
     
     required init?(coder: NSCoder) {
@@ -86,8 +88,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Configure methods
     func setupData(withData data: PostNews) {
-        DispatchQueue.main.async(qos: .userInteractive) { [weak self] in
-            guard let self = self else { return }
+        DispatchQueue.main.async { 
             self.titleOfPost.text = data.title
             self.categoryNewsLabel.text = data.categoryType
             self.imageOfPost.image = data.imageOfPost

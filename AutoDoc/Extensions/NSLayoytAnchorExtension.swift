@@ -15,69 +15,69 @@ extension UIView {
     }
     
     //MARK: - Установка якорей
-    func pinCenterHorizontal(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinCenterHorizontal(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let centerConstarint = self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset)
-        NSLayoutConstraint.activate([centerConstarint])
+        return centerConstarint
     }
     
-    func pinCenterVertical(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinCenterVertical(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let centerConstarint = self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: offset)
-        NSLayoutConstraint.activate([centerConstarint])
+       return centerConstarint
     }
     
-    func pinToLeftSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToLeftSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let leftConstraint = self.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: offset)
-        NSLayoutConstraint.activate([leftConstraint])
+        return leftConstraint
     }
     
-    func pinToRightSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToRightSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let rightConstraint = self.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -offset)
-        NSLayoutConstraint.activate([rightConstraint])
+        return rightConstraint
     }
     
-    func pinToLeft(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToLeft(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let leftConstraint = self.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: offset)
-        NSLayoutConstraint.activate([leftConstraint])
+        return leftConstraint
     }
     
-    func pinToRight(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToRight(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let rightConstraint = self.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: -offset)
-        NSLayoutConstraint.activate([rightConstraint])
+        return rightConstraint
     }
     
-    func pinToTopSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToTopSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let topConstraint = self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: offset)
-        NSLayoutConstraint.activate([topConstraint])
+        return topConstraint
     }
     
-    func pinToBottomSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToBottomSafeArea(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let bottomConstraint = self.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: offset)
-        NSLayoutConstraint.activate([bottomConstraint])
+        return bottomConstraint
     }
     
-    func pinToTop(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToTop(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let topConstraint = self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: offset)
-        NSLayoutConstraint.activate([topConstraint])
+        return topConstraint
     }
     
-    func pinToBottom(equalTo view: UIView, withOffset offset: CGFloat = 0) {
+    func pinToBottom(equalTo view: UIView, withOffset offset: CGFloat = 0) -> NSLayoutConstraint {
         let bottomConstraint = self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: offset)
-        NSLayoutConstraint.activate([bottomConstraint])
+        return bottomConstraint
     }
     
     //MARK: - Установка размеров
-    func setWidth(equalTo width: CGFloat) {
+    func setWidth(equalTo width: CGFloat) -> NSLayoutConstraint {
         let widthConstraint = self.widthAnchor.constraint(equalToConstant: width)
-        NSLayoutConstraint.activate([widthConstraint])
+        return widthConstraint
     }
     
-    func setWidthWithMultiplier(equalTo view: UIView, withMultiplier miltiplier: CGFloat) {
+    func setWidthWithMultiplier(equalTo view: UIView, withMultiplier miltiplier: CGFloat) -> NSLayoutConstraint {
         let widthConstraint = self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: miltiplier)
-        NSLayoutConstraint.activate([widthConstraint])
+        return widthConstraint
     }
     
-    func setHeight(equalTo height: CGFloat) {
+    func setHeight(equalTo height: CGFloat) -> NSLayoutConstraint {
         let heightConstraint = self.heightAnchor.constraint(equalToConstant: height)
-        NSLayoutConstraint.activate([heightConstraint])
+        return heightConstraint
     }
 }

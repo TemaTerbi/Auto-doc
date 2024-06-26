@@ -19,15 +19,9 @@ final class ViewController: UIViewController {
     private let heightForCell: CGFloat = 400
     private let heightForGroup: CGFloat = 410
     private var store: Set<AnyCancellable> = []
+    private var task: Task<(), Never>?
     
     //MARK: - Lifecycle
-    override func loadView() {
-        super.loadView()
-        Task(priority: .background) {
-            await viewModel.getNews()
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         activityView.center = self.view.center
@@ -44,6 +38,10 @@ final class ViewController: UIViewController {
         activityView.hidesWhenStopped = true
         activityView.startAnimating()
         
+        task = Task(priority: .userInitiated, operation: {
+            await viewModel.getNews()
+        })
+        
         viewModel.$news.sink { [weak self] value in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -56,6 +54,11 @@ final class ViewController: UIViewController {
                 }
             }
         }.store(in: &store)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        task?.cancel()
     }
     
     //MARK: - Cоздание compositional layout для колекции
@@ -86,10 +89,12 @@ final class ViewController: UIViewController {
         view.addSubview(collectionView)
         
         collectionView.activateAnchor()
-        collectionView.pinToTopSafeArea(equalTo: view)
-        collectionView.pinToBottomSafeArea(equalTo: view)
-        collectionView.pinToLeftSafeArea(equalTo: view)
-        collectionView.pinToRightSafeArea(equalTo: view)
+        NSLayoutConstraint.activate([
+            collectionView.pinToTopSafeArea(equalTo: view),
+            collectionView.pinToBottomSafeArea(equalTo: view),
+            collectionView.pinToLeftSafeArea(equalTo: view),
+            collectionView.pinToRightSafeArea(equalTo: view),
+        ])
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -101,17 +106,6 @@ final class ViewController: UIViewController {
 
 //MARK: - Extension for delegate UICollectionView
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    //Анимация при нажатии на ячейку и последующий пуш на детальный экран
-    private func pushWithAnimationCelll(nextViewcontroller controller: UIViewController, currentCell cell: UICollectionViewCell) {
-        UIView.animate(withDuration: 0.2) {
-            cell.transform = CGAffineTransform(scaleX: 2, y: 2)
-        }
-        navigationController?.pushViewController(controller, animated: true)
-        UIView.animate(withDuration: 0.2) {
-            cell.transform = .identity
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.news.count
     }
@@ -125,18 +119,32 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? PostCollectionViewCell else { return }
         let currentPost = viewModel.news[indexPath.row]
         let detailViewController = DetailPostViewController(image: currentPost.imageOfPost, title: currentPost.title, description: currentPost.description, publishedDate: currentPost.publishedDate)
-        pushWithAnimationCelll(nextViewcontroller: detailViewController, currentCell: cell)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    //Анимация нажатия на ячейку
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = .identity
+        }
     }
     
     //MARK: - Функционал для бесконечной ленты
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.news.count - 1 {
-            Task {
+            task = Task(priority: .userInitiated, operation: {
                 await viewModel.fetchMoreNews()
-            }
+            })
         }
     }
 }

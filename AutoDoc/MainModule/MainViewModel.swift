@@ -16,18 +16,24 @@ final class MainViewModel {
     @Published var news: [PostNews] = []
     
     //MARK: - Api servie methods
+    @MainActor
     func getNews() async {
-        let newsFromApi = try? await networkManager.getNews()
-        if let news = newsFromApi {
-            self.news = news
+        do {
+            let newsFromApi = try await networkManager.getNews()
+            news = newsFromApi
+        } catch {
+            print("Не удалось загрузить новости, ошибка: \(error.localizedDescription)")
         }
     }
     
+    @MainActor
     func fetchMoreNews() async {
         URL.nextPage()
-        let newsFromApi = try? await networkManager.getNews()
-        if let news = newsFromApi {
-            self.news += news
+        do {
+            let newsFromApi = try await networkManager.getNews()
+            news += newsFromApi
+        } catch {
+            print("Не удалось загрузить новости, ошибка: \(error.localizedDescription)")
         }
     }
 }

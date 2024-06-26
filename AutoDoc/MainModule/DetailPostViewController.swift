@@ -61,10 +61,12 @@ final class DetailPostViewController: UIViewController {
     //MARK: - Lifecycle
     convenience init(image: UIImage, title: String, description: String, publishedDate: String) {
         self.init()
-        detailPostImageView.image = image
-        titleOfPost.text = title
-        descriptionOfPost.text = description
-        dateOfPost.text = publishedDate
+        DispatchQueue.main.async {
+            self.detailPostImageView.image = image
+            self.titleOfPost.text = title
+            self.descriptionOfPost.text = description
+            self.dateOfPost.text = publishedDate
+        }
     }
     
     override func viewDidLoad() {
@@ -83,24 +85,27 @@ final class DetailPostViewController: UIViewController {
     
     private func setupConstraints() {
         detailPostImageView.activateAnchor()
-        detailPostImageView.pinToLeftSafeArea(equalTo: view, withOffset: spacing)
-        detailPostImageView.pinToRightSafeArea(equalTo: view, withOffset: spacing)
-        detailPostImageView.pinToTopSafeArea(equalTo: view)
-        detailPostImageView.setHeight(equalTo: DeviceChecker.getHeightOfImageInDetailView())
-        
         titleOfPost.activateAnchor()
-        titleOfPost.pinToTop(equalTo: detailPostImageView, withOffset: 20)
-        titleOfPost.pinToLeftSafeArea(equalTo: view, withOffset: spacing)
-        titleOfPost.pinToRightSafeArea(equalTo: view, withOffset: spacing)
-        
         descriptionOfPost.activateAnchor()
-        descriptionOfPost.pinToTop(equalTo: titleOfPost, withOffset: 5)
-        descriptionOfPost.pinToLeftSafeArea(equalTo: view, withOffset: spacing)
-        descriptionOfPost.pinToRightSafeArea(equalTo: view, withOffset: spacing)
-        
         dateOfPost.activateAnchor()
-        dateOfPost.pinToTop(equalTo: descriptionOfPost, withOffset: 5)
-        dateOfPost.pinToLeftSafeArea(equalTo: view, withOffset: spacing)
-        dateOfPost.pinToRightSafeArea(equalTo: view, withOffset: spacing)
+        
+        NSLayoutConstraint.activate([
+            detailPostImageView.pinToLeftSafeArea(equalTo: view, withOffset: spacing),
+            detailPostImageView.pinToRightSafeArea(equalTo: view, withOffset: spacing),
+            detailPostImageView.pinToTopSafeArea(equalTo: view),
+            detailPostImageView.setHeight(equalTo: DeviceChecker.getHeightOfImageInDetailView()),
+            
+            titleOfPost.pinToTop(equalTo: detailPostImageView, withOffset: 20),
+            titleOfPost.pinToLeftSafeArea(equalTo: view, withOffset: spacing),
+            titleOfPost.pinToRightSafeArea(equalTo: view, withOffset: spacing),
+            
+            descriptionOfPost.pinToTop(equalTo: titleOfPost, withOffset: 5),
+            descriptionOfPost.pinToLeftSafeArea(equalTo: view, withOffset: spacing),
+            descriptionOfPost.pinToRightSafeArea(equalTo: view, withOffset: spacing),
+            
+            dateOfPost.pinToTop(equalTo: descriptionOfPost, withOffset: 5),
+            dateOfPost.pinToLeftSafeArea(equalTo: view, withOffset: spacing),
+            dateOfPost.pinToRightSafeArea(equalTo: view, withOffset: spacing),
+        ])
     }
 }
