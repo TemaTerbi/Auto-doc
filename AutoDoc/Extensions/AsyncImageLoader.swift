@@ -8,6 +8,7 @@
 import UIKit
 
 let imageCache = NSCache<NSString, AnyObject>()
+let networkServive = NetworkManager()
 
 extension UIImageView {
     func loadImageUsingCache(withUrl urlString : String) {
@@ -21,19 +22,15 @@ extension UIImageView {
         }
 
         // Если нет в кэше, то качаем
-        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
-
-            DispatchQueue.main.async(qos: .background) {
-                if let image = UIImage(data: data!) {
+        if let url = url {
+            Task(priority: .userInitiated) {
+                let image = try await networkServive.loadImage(withUrl: url)
+                
+                DispatchQueue.main.async(qos: .userInitiated) {
                     imageCache.setObject(image, forKey: urlString as NSString)
                     self.image = image
                 }
             }
-
-        }).resume()
+        }
     }
 }

@@ -51,18 +51,23 @@ final class PostCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.contentView.backgroundColor = .white
-        self.contentView.layer.cornerRadius = cornerRadiusSize
-        self.contentView.layer.masksToBounds = true
+        layer.cornerRadius = cornerRadiusSize
+        layer.masksToBounds = true
+        contentView.backgroundColor = .white
         
         addSubviews()
         setupConstraints()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageOfPost.image = nil
+    }
+    
     private func addSubviews() {
-        self.contentView.addSubview(imageOfPost)
-        self.contentView.addSubview(titleOfPost)
-        self.contentView.addSubview(categoryNewsLabel)
+        contentView.addSubview(imageOfPost)
+        contentView.addSubview(titleOfPost)
+        contentView.addSubview(categoryNewsLabel)
     }
     
     private func setupConstraints() {

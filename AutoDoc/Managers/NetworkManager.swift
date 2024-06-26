@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //MARK: - Base url extension
 extension URL {
@@ -33,5 +34,14 @@ final class NetworkManager {
         let (data, _) = try await session.data(from: .baseUrl)
         let news = try JSONDecoder().decode(NewsModel.self, from: data)
         return news.news
+    }
+    
+    func loadImage(withUrl url: URL) async throws -> UIImage {
+        let (data, _) = try await session.data(from: url)
+        if let image = UIImage(data: data) {
+            return image
+        }
+        
+        return .car
     }
 }
