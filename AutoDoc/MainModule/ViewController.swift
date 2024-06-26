@@ -28,6 +28,11 @@ final class ViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        activityView.center = self.view.center
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6
@@ -37,7 +42,6 @@ final class ViewController: UIViewController {
         
         self.view.addSubview(activityView)
         activityView.hidesWhenStopped = true
-        activityView.center = self.view.center
         activityView.startAnimating()
         
         viewModel.$news.sink { [weak self] value in
