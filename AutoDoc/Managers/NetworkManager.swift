@@ -22,8 +22,13 @@ extension URL {
 
 //MARK: - Network Service
 final class NetworkManager {
+    
     private let session: URLSession
     private let imageCache = NSCache<NSString, AnyObject>()
+    private let resizeImageServive = ResizeImageService()
+    
+    //Будем получать картинку 800 на 800
+    private let sizeOfImage: Int = 800
 
     // MARK: - Initializers
     init(session: URLSession = .shared) {
@@ -62,7 +67,8 @@ final class NetworkManager {
                 image = try await loadImage(withUrl: url)
             }
             
-            posts.append(PostNews(title: post.title, description: post.description, publishedDate: post.publishedDate, categoryType: post.categoryType, imageOfPost: image))
+            let resizableImage = resizeImageServive.resizeImage(image: image, targetSize: CGSize(width: sizeOfImage, height: sizeOfImage))
+            posts.append(PostNews(title: post.title, description: post.description, publishedDate: post.publishedDate, categoryType: post.categoryType, imageOfPost: resizableImage))
         }
         
         return posts
