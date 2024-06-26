@@ -120,7 +120,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCollectionViewCell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PostCollectionViewCell else { return }
         let currentPost = viewModel.news[indexPath.row]
         let detailViewController = DetailPostViewController(image: currentPost.imageOfPost, title: currentPost.title, description: currentPost.description, publishedDate: currentPost.publishedDate)
         pushWithAnimationCelll(nextViewcontroller: detailViewController, currentCell: cell)
