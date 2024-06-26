@@ -23,6 +23,7 @@ final class MainViewModel {
     }
     
     func fetchMorNews() async {
+        URL.nextPage()
         let newsFromApi = try? await networkManager.getNews()
         if let news = newsFromApi {
             self.news += news

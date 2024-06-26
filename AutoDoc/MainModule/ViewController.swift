@@ -112,8 +112,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     //MARK: - Функционал для бесконечной ленты
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.news.count - 1 {
-            URL.nextPage()
-            Task(priority: .background) {
+            Task {
                 await viewModel.fetchMorNews()
             }
         }
