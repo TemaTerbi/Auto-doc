@@ -22,7 +22,6 @@
 		653C7C282C2B4F2900B94CCC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C272C2B4F2900B94CCC /* NetworkManager.swift */; };
 		653C7C2B2C2B50F700B94CCC /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2A2C2B50F700B94CCC /* NewsModel.swift */; };
 		653C7C2D2C2B51AD00B94CCC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C7C2C2C2B51AD00B94CCC /* MainViewModel.swift */; };
-		65DFBADA2C2C1223008112F9 /* AsyncForEach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFBAD92C2C1223008112F9 /* AsyncForEach.swift */; };
 		65DFBADC2C2C71F4008112F9 /* ResizeImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DFBADB2C2C71F4008112F9 /* ResizeImageService.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +62,6 @@
 		653C7C272C2B4F2900B94CCC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		653C7C2A2C2B50F700B94CCC /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		653C7C2C2C2B51AD00B94CCC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		65DFBAD92C2C1223008112F9 /* AsyncForEach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncForEach.swift; sourceTree = "<group>"; };
 		65DFBADB2C2C71F4008112F9 /* ResizeImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				653C7C192C2AD30800B94CCC /* NSLayoytAnchorExtension.swift */,
-				65DFBAD92C2C1223008112F9 /* AsyncForEach.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,7 +326,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65DFBADA2C2C1223008112F9 /* AsyncForEach.swift in Sources */,
 				653C7C282C2B4F2900B94CCC /* NetworkManager.swift in Sources */,
 				653C7C1D2C2ADF3B00B94CCC /* PostCollectionViewCell.swift in Sources */,
 				653C7C212C2B226C00B94CCC /* DetailPostViewController.swift in Sources */,
