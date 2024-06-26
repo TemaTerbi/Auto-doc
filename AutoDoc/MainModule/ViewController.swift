@@ -97,6 +97,7 @@ final class ViewController: UIViewController {
 
 //MARK: - Extension for delegate UICollectionView
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    //Анимация при нажатии на ячейку и последующий пуш на детальный экран
     private func pushWithAnimationCelll(nextViewcontroller controller: UIViewController, currentCell cell: UICollectionViewCell) {
         UIView.animate(withDuration: 0.2) {
             cell.transform = CGAffineTransform(scaleX: 2, y: 2)

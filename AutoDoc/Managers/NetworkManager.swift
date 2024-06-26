@@ -37,7 +37,8 @@ final class NetworkManager {
         return try await loadDataToPost(newsFromApi: news.news)
     }
     
-    func loadImage(withUrl url: URL) async throws -> UIImage {
+    //Метод загрузки приложения
+    private func loadImage(withUrl url: URL) async throws -> UIImage {
         let (data, _) = try await session.data(from: url)
         
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
@@ -52,6 +53,7 @@ final class NetworkManager {
         return .car
     }
     
+    //Метод, который обрабатывает данные из сети и кладет их сразу в готовую модель
     private func loadDataToPost(newsFromApi: [News]) async throws -> [PostNews] {
         var image: UIImage = UIImage(resource: .car)
         var posts: [PostNews] = []

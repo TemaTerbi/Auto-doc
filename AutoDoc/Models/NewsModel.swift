@@ -30,6 +30,7 @@ struct News: Codable {
     }
 }
 
+//MARK: - Model for data at cell
 struct PostNews {
     let title, description, publishedDate, categoryType: String
     let imageOfPost: UIImage

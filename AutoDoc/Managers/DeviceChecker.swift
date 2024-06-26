@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - Класс, который проверяет на каком устройстве запущено приложение
 final class DeviceChecker {
     static func getHeightOfImageInDetailView() -> CGFloat {
         let device = UIScreen.main.traitCollection.userInterfaceIdiom
