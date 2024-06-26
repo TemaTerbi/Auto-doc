@@ -17,8 +17,11 @@ extension UIImageView {
 
         // Проверяем кэш на наличие фото
         if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
-            self.image = cachedImage
-            return
+            DispatchQueue.main.async(qos: .userInitiated) { [weak self] in
+                guard let self = self else { return }
+                self.image = cachedImage
+                return
+            }
         }
 
         // Если нет в кэше, то качаем
@@ -26,7 +29,8 @@ extension UIImageView {
             Task(priority: .userInitiated) {
                 let image = try await networkServive.loadImage(withUrl: url)
                 
-                DispatchQueue.main.async(qos: .userInitiated) {
+                DispatchQueue.main.async(qos: .userInitiated) { [weak self] in
+                    guard let self = self else { return }
                     imageCache.setObject(image, forKey: urlString as NSString)
                     self.image = image
                 }

@@ -20,9 +20,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
     //MARK: - Views items
     private(set) lazy var imageOfPost: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(resource: .car)
         imageView.backgroundColor = .systemGray5
-        imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -95,8 +93,13 @@ final class PostCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Configure methods
     func setupData(withData data: News) {
-        titleOfPost.text = data.title
-        categoryNewsLabel.text = data.categoryType
+        DispatchQueue.main.async(qos: .userInitiated) { [weak self] in
+            guard let self = self else { return }
+            self.titleOfPost.text = data.title
+            self.categoryNewsLabel.text = data.categoryType
+        }
+        
+        //Картинка и так грузится асинхронно
         if let imageUrl = data.titleImageURL {
             imageOfPost.loadImageUsingCache(withUrl: imageUrl)
         }
