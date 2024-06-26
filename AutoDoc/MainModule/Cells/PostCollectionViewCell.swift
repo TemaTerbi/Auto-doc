@@ -28,7 +28,6 @@ final class PostCollectionViewCell: UICollectionViewCell {
     
     private(set) lazy var titleOfPost: UILabel = {
         let label = UILabel()
-        label.text = "McLaren может использовать платформу BMW для внедорожника"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = .systemFont(ofSize: DeviceChecker.isIpad() ? titleFontSize * multiplierForIpad : titleFontSize, weight: .bold)
@@ -37,7 +36,6 @@ final class PostCollectionViewCell: UICollectionViewCell {
     
     private lazy var categoryNewsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Автоновости"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = .systemFont(ofSize: DeviceChecker.isIpad() ? categoryFontSize * multiplierForIpad : categoryFontSize, weight: .medium)
@@ -55,11 +53,6 @@ final class PostCollectionViewCell: UICollectionViewCell {
         
         addSubviews()
         setupConstraints()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        imageOfPost.image = nil
     }
     
     private func addSubviews() {
@@ -92,16 +85,12 @@ final class PostCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Configure methods
-    func setupData(withData data: News) {
-        DispatchQueue.main.async(qos: .userInitiated) { [weak self] in
+    func setupData(withData data: PostNews) {
+        DispatchQueue.main.async(qos: .userInteractive) { [weak self] in
             guard let self = self else { return }
             self.titleOfPost.text = data.title
             self.categoryNewsLabel.text = data.categoryType
-        }
-        
-        //Картинка и так грузится асинхронно
-        if let imageUrl = data.titleImageURL {
-            imageOfPost.loadImageUsingCache(withUrl: imageUrl)
+            self.imageOfPost.image = data.imageOfPost
         }
     }
 }

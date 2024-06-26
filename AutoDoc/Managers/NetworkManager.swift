@@ -23,6 +23,7 @@ extension URL {
 //MARK: - Network Service
 final class NetworkManager {
     private let session: URLSession
+    private let imageCache = NSCache<NSString, AnyObject>()
 
     // MARK: - Initializers
     init(session: URLSession = .shared) {
@@ -30,18 +31,38 @@ final class NetworkManager {
     }
 
     // MARK: - Methods
-    func getNews() async throws -> [News] {
+    func getNews() async throws -> [PostNews] {
         let (data, _) = try await session.data(from: .baseUrl)
         let news = try JSONDecoder().decode(NewsModel.self, from: data)
-        return news.news
+        return try await loadDataToPost(newsFromApi: news.news)
     }
     
     func loadImage(withUrl url: URL) async throws -> UIImage {
         let (data, _) = try await session.data(from: url)
+        
+        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
+            return cachedImage
+        }
+        
         if let image = UIImage(data: data) {
+            imageCache.setObject(image, forKey: url.absoluteString as NSString)
             return image
         }
         
         return .car
+    }
+    
+    private func loadDataToPost(newsFromApi: [News]) async throws -> [PostNews] {
+        var image: UIImage = UIImage(resource: .car)
+        var posts: [PostNews] = []
+        try await newsFromApi.asyncForEach { post in
+            if let url = URL(string: post.titleImageURL ?? "") {
+                image = try await loadImage(withUrl: url)
+            }
+            
+            posts.append(PostNews(title: post.title, description: post.description, publishedDate: post.publishedDate, categoryType: post.categoryType, imageOfPost: image))
+        }
+        
+        return posts
     }
 }
